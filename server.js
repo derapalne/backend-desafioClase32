@@ -9,6 +9,7 @@ import Mocker from "./src/utils/mocker.js";
 const mocker = new Mocker();
 import inicializarProductos from "./src/utils/init.js";
 import routerRandom from "./src/routes/randomsRoute.js";
+import config from "./src/utils/config.js";
 
 // [ --------- MIDDLEWARE --------- ] //
 
@@ -53,7 +54,7 @@ app.use(cookieParser());
 app.use(
     session({
         store: MongoStore.create({
-            mongoUrl: process.env.MONGO_URI,
+            mongoUrl: config.MONGO_URI,
             mongoOptions: advancedOptions,
         }),
         secret: "andywarhol",
@@ -197,14 +198,8 @@ app.post("/logout", isLogged, (req, res) => {
 
 // [ --------- CORRER EL SERVIDOR --------- ] //
 
-const argumentos = parseArgs(process.argv.slice(2))
-
-const PORT = argumentos.port || 8080;
-
-const modo = argumentos.modo || process.env.SERVER_MODE;
-
-if (modo == "fork") {
-    httpServer.listen(PORT, () => console.log("Lisstooooo ", PORT));
+if (config.MODO == "fork") {
+    httpServer.listen(config.PORT, () => console.log("Lisstooooo ", config.PORT));
 } else if (modo == "cluster") {
     if (cluster.isPrimary) {
         console.log(`Proceso primario corriendo: ${process.pid} 👍👍`);
@@ -217,9 +212,9 @@ if (modo == "fork") {
     } else {
         httpServer.listen(PORT, () => console.log("Lisstooooo ", PORT));
     }
+} else {
+    console.log("No se ha introducido un modo.");
 }
-
-
 
 // [ --------- SOCKET --------- ] //
 
