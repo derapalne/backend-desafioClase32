@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/header', {title: 'Info'}) %>
+</head>
+
+<body>
+  <div id="login" class="contenedor" style="width:70%">
+    <h1>Acá está la data compi</h1>
+    <table id="tabla">
+      <tr>
+        <td>Argumentos de entrada:</td>
+        <td><%= args %></td>
+        <td>Nombre de la plataforma:</td>
+        <td><%= os %></td>
+      </tr>
+      <tr>
+        <td>Versión de Node.js:</td>
+        <td><%= nodeVersion %></td>
+        <td>Memoria total reservada:</td>
+        <td><%= memory %></td>
+      </tr>
+      <tr>
+        <td>Path de ejecución:</td>
+        <td><%= path %></td>
+        <td>ID de Proceso</td>
+        <td><%= pid %></td>
+      </tr>
+      <tr>
+        <td>Carpeta del proyecto:</td>
+        <td><%= folder %></td>
+        <td>Cantidad de hilos:</td>
+        <td><%= numCpus %></td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <div id="nav-links">
+    <a href="/register">Registrarse</a>
+  </div>
+</body>
+
+</html>
