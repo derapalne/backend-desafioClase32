@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import 'dotenv/config';
+import logger from '../utils/logger.js';
 
 
 export const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -7,4 +8,4 @@ export const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true
 mongoose
     .connect(process.env.MONGO_URI, advancedOptions)
     .then((db) => console.log("MongoDB conectada 😎👍"))
-    .catch((err) => console.log(err));
+    .catch((err) => logger.error(err));

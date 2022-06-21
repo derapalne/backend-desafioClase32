@@ -10,6 +10,8 @@ const mocker = new Mocker();
 import inicializarProductos from "./src/utils/init.js";
 import routerRandom from "./src/routes/randomsRoute.js";
 import config from "./src/utils/config.js";
+// >>>>>Logger
+import logger from './src/utils/logger.js'
 
 // [ --------- MIDDLEWARE --------- ] //
 
@@ -39,6 +41,8 @@ import { parse } from "path";
 import cluster from "cluster";
 import os from "os";
 const numCpus = os.cpus().length;
+// >>>>>Gzip
+import compression from "compression";
 
 // [ --------- CONFIGURACION --------- ] //
 
@@ -69,26 +73,22 @@ app.use(
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(compression());
 
 app.use("/api/random", routerRandom);
+
+// app.use(logRoute); Me loguea cada página y recurso que accede, hay forma de que no haga esto?
 
 app.use((err, req, res, next) => {
     app.locals.registerMessage = req.flash("registerMessage");
     app.locals.loginMessage = req.flash("loginMessage");
     app.locals.email = req.flash("email");
-    console.log(err);
-    // Acá traté de manejar los 404 not found pero no entendí muy bien cómo :p
-    if (err instanceof NotFound) {
-        res.render("404");
-    } else {
-        next(err);
-    }
 });
 
 // >>>>>DBs
-const archMensajes = new ArchivadorMensajes("chat", optionsSQLite);
+const archMensajes = new ArchivadorMensajes("chat", optionsSQLite, logger);
 archMensajes.chequearTabla();
-const archProductos = new ArchivadorProductos("productos", optionsMariaDB);
+const archProductos = new ArchivadorProductos("productos", optionsMariaDB, logger);
 archProductos.chequearTabla();
 
 // >>>>>Motor de plantillas
@@ -102,7 +102,7 @@ app.set("view engine", "ejs");
 
 // [ --------- RUTAS --------- ] //
 
-app.get("/", isLogged, async (req, res) => {
+app.get("/", logger.logRoute, isLogged, async (req, res) => {
     try {
         const productos = await archProductos.getAll();
         const mensajes = await archMensajes.read();
@@ -116,7 +116,7 @@ app.get("/", isLogged, async (req, res) => {
     }
 });
 
-app.get("/api/productos-test", async (req, res) => {
+app.get("/api/productos-test", logger.logRoute, async (req, res) => {
     try {
         const productos = mocker.generarProductos(5);
         const mensajes = await archMensajes.read();
@@ -129,7 +129,7 @@ app.get("/api/productos-test", async (req, res) => {
     }
 });
 
-app.get("/login", (req, res) => {
+app.get("/login", logger.logRoute, (req, res) => {
     try {
         if (req.isAuthenticated()) {
             res.redirect("/");
@@ -141,18 +141,34 @@ app.get("/login", (req, res) => {
     }
 });
 
-app.get("/register", (req, res) => {
+app.get("/login-error", logger.logRoute, (req, res) => {
+    try {
+        res.status(403).render("login-error");
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
+app.get("/register-error", logger.logRoute, (req, res) => {
+    try {
+        res.status(403).render("register-error");
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
+app.get("/register", logger.logRoute, (req, res) => {
     if (req.isAuthenticated()) {
         res.status(200).redirect("/");
     }
     res.status(200).render("register");
 });
 
-app.get("/datos", (req, res) => {
+app.get("/datos", logger.logRoute, (req, res) => {
     res.json(req.session);
 });
 
-app.get("/info", (req, res) => {
+app.get("/info", logger.logRoute, (req, res) => {
     res.render("info", {
         args: process.argv.slice(2).join(" "),
         os: process.platform,
@@ -167,9 +183,10 @@ app.get("/info", (req, res) => {
 
 app.post(
     "/register",
+    logger.logRoute,
     passport.authenticate("local-register", {
         successRedirect: "/",
-        failureRedirect: "/register",
+        failureRedirect: "/register-error",
         passReqToCallback: true,
     }),
     (req, res) => {}
@@ -177,15 +194,16 @@ app.post(
 
 app.post(
     "/login",
+    logger.logRoute,
     passport.authenticate("local-login", {
         successRedirect: "/",
-        failureRedirect: "/login",
+        failureRedirect: "/login-error",
         passReqToCallback: true,
     }),
     (req, res) => {}
 );
 
-app.post("/logout", isLogged, (req, res) => {
+app.post("/logout", logger.logRoute, isLogged, (req, res) => {
     try {
         const email = req.user.email;
         req.session.destroy((err) => {
@@ -195,6 +213,8 @@ app.post("/logout", isLogged, (req, res) => {
         res.status(500).send(e);
     }
 });
+
+app.use(logger.logUndefinedRoute);
 
 // [ --------- CORRER EL SERVIDOR --------- ] //
 

@@ -1,4 +1,5 @@
 import Archivador from "../contenedor/contenedorArchivador.js";
+import logger from '../utils/logger.js';
 
 export default class ArchivadorMensajes extends Archivador {
     constructor(tableName, config) {
@@ -13,9 +14,10 @@ export default class ArchivadorMensajes extends Archivador {
                 .then((mensajes) => {
                     mens = mensajes;
                 })
-                .catch((e) => console.log(e));
+                .catch((e) => logger.error(e));
             return mens;
         } catch (e) {
+            logger.error(e)
             throw new Error(e);
         }
     }
@@ -32,28 +34,29 @@ export default class ArchivadorMensajes extends Archivador {
                             table.string("timestamp");
                         })
                         .then(() => console.log("Tabla Creada:", this.tableName))
-                        .catch((e) => console.log(e));
+                        .catch((e) => logger.error(e));
                     //.finally(() => this.knex.destroy());
                 } else {
                     console.log("Tabla Mensajes existente.");
                 }
             });
         } catch (e) {
+            logger.error(e)
             throw new Error(e);
         }
     }
 
     check(mensaje) {
         if (!mensaje.texto) {
-            console.log("error texto");
+            logger.error('Error en el texto del mensaje');
             return false;
         }
         if (!mensaje.mail) {
-            console.log("error mail");
+            logger.error('Error en el mail del mensaje');
             return false;
         }
         if (!mensaje.timestamp) {
-            console.log("error timestamp");
+            logger.error('Error en el timestamp del mensaje');
             return false;
         }
         return true;
