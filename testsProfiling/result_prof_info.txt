@@ -1,0 +1,194 @@
+Statistical profiling result from info_v8.log, (3441 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   3002   87.2%          C:\Windows\SYSTEM32\ntdll.dll
+    417   12.1%          C:\Users\Derita\AppData\Roaming\nvm\v16.15.1\node.exe
+      2    0.1%          C:\Windows\System32\KERNEL32.DLL
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      2    0.1%   10.0%  Function: ^processTimers node:internal/timers:487:25
+      2    0.1%   10.0%  Function: ^listOnTimeout node:internal/timers:507:25
+      1    0.0%    5.0%  LazyCompile: *stat node:internal/modules/cjs/loader:151:14
+      1    0.0%    5.0%  LazyCompile: *scanLine C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:803:22
+      1    0.0%    5.0%  LazyCompile: *resolve node:path:158:10
+      1    0.0%    5.0%  LazyCompile: *next C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\router\index.js:176:16
+      1    0.0%    5.0%  Function: ^writeOrBuffer node:internal/streams/writable:365:23
+      1    0.0%    5.0%  Function: ^validateString node:internal/validators:118:24
+      1    0.0%    5.0%  Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1    0.0%    5.0%  Function: ^parseurl C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\parseurl\index.js:35:19
+      1    0.0%    5.0%  Function: ^isRelativeSpecifier node:internal/modules/esm/resolve:965:29
+      1    0.0%    5.0%  Function: ^initialize C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\passport\lib\middleware\initialize.js:51:29
+      1    0.0%    5.0%  Function: ^getStatsFromBinding node:internal/fs/utils:531:29
+      1    0.0%    5.0%  Function: ^dirname node:path:653:10
+      1    0.0%    5.0%  Function: ^basename node:path:749:11
+      1    0.0%    5.0%  Function: ^_write node:internal/streams/writable:283:16
+      1    0.0%    5.0%  Function: ^Socket._writeGeneric node:net:791:42
+      1    0.0%    5.0%  Function: ^<anonymous> :1:20
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+     20    0.6%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+     13    0.4%   65.0%  GC
+   3421   99.4%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   3002   87.2%  C:\Windows\SYSTEM32\ntdll.dll
+
+    417   12.1%  C:\Users\Derita\AppData\Roaming\nvm\v16.15.1\node.exe
+    268   64.3%    C:\Users\Derita\AppData\Roaming\nvm\v16.15.1\node.exe
+     37   13.8%      Function: ^compileFunction node:vm:308:25
+     37  100.0%        Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+     36   97.3%          Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+     35   97.2%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    2.8%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    2.7%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+     34   12.7%      Function: ^handleWriteReq node:internal/stream_base_commons:45:24
+     34  100.0%        Function: ^writeGeneric node:internal/stream_base_commons:147:22
+     34  100.0%          Function: ^Socket._writeGeneric node:net:791:42
+     34  100.0%            Function: ^Socket._write node:net:828:35
+     17    6.3%      Function: ^moduleStrategy node:internal/modules/esm/translators:112:56
+     17  100.0%        Function: ^moduleProvider node:internal/modules/esm/loader:322:28
+     17  100.0%          C:\Users\Derita\AppData\Roaming\nvm\v16.15.1\node.exe
+     16    6.0%      Function: ^stat node:internal/modules/cjs/loader:151:14
+      8   50.0%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      7   87.5%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      7  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   12.5%          Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      8   50.0%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      7   87.5%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      7  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      1   12.5%          LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+     16    6.0%      Function: ^existsSync node:fs:290:20
+     16  100.0%        Function: ^getIncludePath C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:154:24
+     16  100.0%          Function: ^includeFile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:307:21
+     16  100.0%            Function: ^include C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:685:30
+     12    4.5%      C:\Users\Derita\AppData\Roaming\nvm\v16.15.1\node.exe
+      2   16.7%        LazyCompile: *scanLine C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:803:22
+      1   50.0%          LazyCompile: *compile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:569:21
+      1  100.0%            Function: ^compile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:379:35
+      1   50.0%          Function: ^<anonymous> C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:730:32
+      1  100.0%            C:\Users\Derita\AppData\Roaming\nvm\v16.15.1\node.exe
+      2   16.7%        Function: ^parseAcceptEncoding C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\negotiator\lib\encoding.js:31:29
+      2  100.0%          Function: ^preferredEncodings C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\negotiator\lib\encoding.js:138:28
+      2  100.0%            Function: ^encodings C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\negotiator\index.js:52:52
+      1    8.3%        LazyCompile: ~resolvePackageTargetString node:internal/modules/esm/resolve:507:36
+      1  100.0%          LazyCompile: ~resolvePackageTarget node:internal/modules/esm/resolve:572:30
+      1  100.0%            LazyCompile: ~resolvePackageTarget node:internal/modules/esm/resolve:572:30
+      1    8.3%        LazyCompile: ~parse node:url:167:37
+      1  100.0%          LazyCompile: ~urlParse node:url:151:18
+      1  100.0%            LazyCompile: ~validate_config C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\@mapbox\node-pre-gyp\lib\util\versioning.js:195:25
+      1    8.3%        LazyCompile: ~ConnectionString C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\mongodb-connection-string-url\lib\index.js:82:16
+      1  100.0%          Function: ^parseOptions C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\mongodb\lib\connection_string.js:208:22
+      1  100.0%            LazyCompile: ~MongoClient C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\mongodb\lib\mongo_client.js:60:16
+      1    8.3%        LazyCompile: *Template C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:507:18
+      1  100.0%          Function: ^compile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:379:35
+      1  100.0%            Function: ^handleCache C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:208:21
+      1    8.3%        Function: ~<anonymous> C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\compression\node_modules\debug\src\node.js:1:1
+      1  100.0%          Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    8.3%        Function: ^pipe C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\send\index.js:510:43
+      1  100.0%          Function: ^serveStatic C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\serve-static\index.js:72:31
+      1  100.0%            Function: ^handle C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\router\layer.js:86:49
+      1    8.3%        Function: ^createRegex C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:558:25
+      1  100.0%          Function: ^Template C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:507:18
+      1  100.0%            Function: ^compile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:379:35
+      1    8.3%        Function: ^FastBuffer node:internal/buffer:958:14
+      1  100.0%          Function: ^createUnsafeBuffer node:internal/buffer:1059:28
+      1  100.0%            Function: ^createPool node:buffer:151:20
+     10    3.7%      Function: ^realpathSync node:fs:2425:22
+     10  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      9   90.0%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      9  100.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1   10.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      9    3.4%      LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-ZDL4FDSE.mjs:1:16227
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-ZDL4FDSE.mjs:1:39065
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-UZ7IJ6VM.mjs:1:10772
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-UZ7IJ6VM.mjs:1:44069
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-QY7GG3DF.mjs:1:1218
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-QY7GG3DF.mjs:1:1970
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-EQH3X4RM.mjs:1:8168
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            Script: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/index.mjs:1:1
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-BEPO4KA3.mjs:10:427004
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-BEPO4KA3.mjs:10:575487
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-626573RJ.mjs:1:7541
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-626573RJ.mjs:1:21931
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-57LSIU4O.mjs:1:195611
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-57LSIU4O.mjs:1:195930
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-3SA7ECAQ.mjs:1:148973
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-3SA7ECAQ.mjs:1:149457
+      1   11.1%        LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-3KV4LYA6.mjs:1:82190
+      1  100.0%          LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-DDHXTT42.mjs:1:443
+      1  100.0%            LazyCompile: ~<anonymous> file:///C:/Users/Derita/Desktop/Programacion/CODER/BACKEND/clase32/desafio/node_modules/@faker-js/faker/dist/esm/chunk-3KV4LYA6.mjs:1:85673
+      7    2.6%      LazyCompile: *scanLine C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:803:22
+      6   85.7%        LazyCompile: *compile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:569:21
+      6  100.0%          Function: ^compile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:379:35
+      6  100.0%            Function: ^handleCache C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:208:21
+      1   14.3%        Function: ^<anonymous> C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:730:32
+      1  100.0%          C:\Users\Derita\AppData\Roaming\nvm\v16.15.1\node.exe
+      1  100.0%            Function: ^generateSource C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\ejs\lib\ejs.js:709:28
+      5    1.9%      Function: ^statSync node:fs:1543:18
+      5  100.0%        Function: ^tryStat C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\view.js:174:17
+      5  100.0%          Function: ^resolve C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\view.js:146:42
+      5  100.0%            Function: ^lookup C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\view.js:104:40
+      4    1.5%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3   75.0%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1   33.3%          Function: ~<anonymous> node:tls:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   33.3%          Function: ~<anonymous> node:internal/crypto/pbkdf2:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   33.3%          Function: ~<anonymous> node:internal/cluster/primary:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   25.0%        Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      1  100.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      3    1.1%      Function: ^stat node:fs:1467:14
+      3  100.0%        Function: ^sendFile C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\send\index.js:716:51
+      3  100.0%          Function: ^pipe C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\send\index.js:510:43
+      3  100.0%            Function: ^serveStatic C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\serve-static\index.js:72:31
+      3    1.1%      Function: ^popAsyncContext node:internal/async_hooks:554:25
+      3  100.0%        Function: ^emitAfterScript node:internal/async_hooks:518:25
+      3  100.0%          Function: ^listOnTimeout node:internal/timers:507:25
+      3  100.0%            Function: ^processTimers node:internal/timers:487:25
+      3    1.1%      Function: ^listOnTimeout node:internal/timers:507:25
+      3  100.0%        Function: ^processTimers node:internal/timers:487:25
+      3    1.1%      Function: ^cookieParser C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\cookie-parser\index.js:44:32
+      2   66.7%        Function: ^handle C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\router\layer.js:86:49
+      2  100.0%          Function: ^trim_prefix C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\router\index.js:288:23
+      2  100.0%            LazyCompile: *next C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\router\index.js:176:16
+      1   33.3%        LazyCompile: *trim_prefix C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\router\index.js:288:23
+      1  100.0%          LazyCompile: *next C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\express\lib\router\index.js:176:16
+      1  100.0%            Function: ^urlencodedParser C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\body-parser\lib\types\urlencoded.js:79:36
+     10    2.4%    Function: ^processTimers node:internal/timers:487:25
+      6    1.4%    Function: ^listOnTimeout node:internal/timers:507:25
+      6  100.0%      Function: ^processTimers node:internal/timers:487:25
+      5    1.2%    Function: ^<anonymous> C:\Users\Derita\Desktop\Programacion\CODER\BACKEND\clase32\desafio\node_modules\tarn\dist\Pool.js:457:41
+      5  100.0%      Function: ^listOnTimeout node:internal/timers:507:25
+      5  100.0%        Function: ^processTimers node:internal/timers:487:25
+

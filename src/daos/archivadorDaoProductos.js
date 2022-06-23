@@ -91,7 +91,7 @@ export default class ArchivadorProductos extends Archivador {
                         .then(() => console.log("Tabla Creada:", this.tableName))
                         .catch((e) => logger.error(e));
                 } else {
-                    console.log("Tabla Productos existente.");
+                    logger.info("Tabla Productos existente.");
                 }
             });
         } catch (e) {

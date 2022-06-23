@@ -47,7 +47,7 @@ agregar.addEventListener("click", (e) => {
 enviar.addEventListener("click", (e) => {
     e.preventDefault();
     const d = new Date();
-    const timestamp = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} - ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+    const timestamp = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} - ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
     // console.log(timestamp);
     socket.emit("mensajeEnviado", {
         mail: mail.value,

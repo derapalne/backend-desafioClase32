@@ -30,4 +30,8 @@ const error = (e) => {
     logger.error('Ha ocurrido un error:', e);
 }
 
-export default {logRoute, logUndefinedRoute, error};
+const info = (msg) => {
+    logger.info(msg);
+}
+
+export default {logRoute, logUndefinedRoute, error, info};

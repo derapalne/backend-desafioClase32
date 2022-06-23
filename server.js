@@ -169,7 +169,7 @@ app.get("/datos", logger.logRoute, (req, res) => {
 });
 
 app.get("/info", logger.logRoute, (req, res) => {
-    res.render("info", {
+    const info = {
         args: process.argv.slice(2).join(" "),
         os: process.platform,
         nodeVersion: process.version,
@@ -178,7 +178,9 @@ app.get("/info", logger.logRoute, (req, res) => {
         pid: process.pid,
         folder: process.cwd(),
         numCpus: numCpus,
-    });
+    };
+    //console.log({info});
+    res.render("info", info);
 });
 
 app.post(
@@ -219,21 +221,19 @@ app.use(logger.logUndefinedRoute);
 // [ --------- CORRER EL SERVIDOR --------- ] //
 
 if (config.MODO == "fork") {
-    httpServer.listen(config.PORT, () => console.log("Lisstooooo ", config.PORT));
+    httpServer.listen(config.PORT, () => logger.info("Lisstooooo ", config.PORT));
 } else if (modo == "cluster") {
     if (cluster.isPrimary) {
-        console.log(`Proceso primario corriendo: ${process.pid} 👍👍`);
+        logger.info(`Proceso primario corriendo: ${process.pid} 👍👍`);
         for (let i = 0; i < numCpus; i++) {
             cluster.fork();
         }
         cluster.on("listening", (worker, address) => {
-            console.log(`Proceso secundario ${worker.process.pid} escuchando en puerto ${address.port}`);
+            logger.info(`Proceso secundario ${worker.process.pid} escuchando en puerto ${address.port}`);
         });
     } else {
-        httpServer.listen(PORT, () => console.log("Lisstooooo ", PORT));
+        httpServer.listen(PORT, () => logger.info("Lisstooooo ", PORT));
     }
-} else {
-    console.log("No se ha introducido un modo.");
 }
 
 // [ --------- SOCKET --------- ] //

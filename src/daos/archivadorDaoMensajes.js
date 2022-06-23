@@ -33,11 +33,11 @@ export default class ArchivadorMensajes extends Archivador {
                             table.string("mail");
                             table.string("timestamp");
                         })
-                        .then(() => console.log("Tabla Creada:", this.tableName))
+                        .then(() => logger.info("Tabla Creada:", this.tableName))
                         .catch((e) => logger.error(e));
                     //.finally(() => this.knex.destroy());
                 } else {
-                    console.log("Tabla Mensajes existente.");
+                    logger.info("Tabla Mensajes existente.");
                 }
             });
         } catch (e) {

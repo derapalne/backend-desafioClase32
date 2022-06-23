@@ -7,5 +7,5 @@ export const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true
 
 mongoose
     .connect(process.env.MONGO_URI, advancedOptions)
-    .then((db) => console.log("MongoDB conectada 😎👍"))
+    .then((db) => logger.info("MongoDB conectada 😎👍"))
     .catch((err) => logger.error(err));
